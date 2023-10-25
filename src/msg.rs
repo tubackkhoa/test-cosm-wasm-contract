@@ -1,5 +1,4 @@
 use cosmwasm_schema::{cw_serde, QueryResponses};
-use cosmwasm_std::{Addr, Coin};
 
 #[cw_serde]
 pub struct InitMsg {
@@ -21,5 +20,5 @@ pub enum QueryMsg {
 }
 #[cw_serde]
 pub enum ExecMsg {
-    DonateOrai { receiver: Addr, amount: Vec<Coin> },
+    DonateOrai { receiver: String },
 }

@@ -2,7 +2,7 @@ use cosmwasm_std::{DepsMut, MessageInfo, Response, StdResult};
 
 use crate::state::COUNTER;
 
-pub fn instantiate(deps: DepsMut, info: MessageInfo, counter: u64) -> StdResult<Response> {
+pub fn instantiate(deps: DepsMut, _info: MessageInfo, counter: u64) -> StdResult<Response> {
     COUNTER.save(deps.storage, &counter)?;
     Ok(Response::new())
 }
@@ -19,17 +19,21 @@ pub mod query {
 }
 
 pub mod execute {
-    use cosmwasm_std::{Addr, BankMsg, Coin, DepsMut, Env, MessageInfo, Response, StdResult};
+    use cosmwasm_std::{BankMsg, DepsMut, Env, MessageInfo, Response, StdResult};
 
     pub fn donate_orai(
-        deps: DepsMut,
-        env: Env,
+        _deps: DepsMut,
+        _env: Env,
         info: MessageInfo,
-        receiver: Addr,
-        amount: Vec<Coin>,
+        receiver: String,
     ) -> StdResult<Response> {
+        let amount = info
+            .funds
+            .into_iter()
+            .filter(|fund| fund.denom == "orai")
+            .collect();
         let bank_msg = BankMsg::Send {
-            to_address: receiver.to_string(),
+            to_address: receiver,
             amount,
         };
         let resp = Response::new().add_message(bank_msg);

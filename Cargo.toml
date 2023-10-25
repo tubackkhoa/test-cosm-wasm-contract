@@ -13,7 +13,7 @@ cw-storage-plus = "0.15.0"
 schemars = "0.8.15"
 cosmwasm-schema = "1.4.1"
 thiserror = "1.0.50"
-cw-multi-test = { version = "0.13.4", optional = true }
 
 [dev-dependencies]
-cw-multi-test = "0.13.4"
+osmosis-test-tube = { git = "https://github.com/oraichain/test-tube.git", rev = "2d5ebe0" }
+test-tube = { git = "https://github.com/oraichain/test-tube.git", rev = "2d5ebe0" }

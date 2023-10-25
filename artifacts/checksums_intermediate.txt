@@ -1,1 +1,0 @@
-07a34f75b84d2dcc370b9c7f4756a62b2ac9680b5a5dc30e8e2364eee0b4a9ef  /target/wasm32-unknown-unknown/release/test_cosm_wasm.wasm
